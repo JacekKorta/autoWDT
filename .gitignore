@@ -1,0 +1,15 @@
+''
+__pycache__/
+migrations/
+config.py
+logs/
+venv/
+app.db
+.idea/
+*.xlsx
+*.db
+*.txt
+materialy/
+*.csv
+*.rtf
+faktury.htm

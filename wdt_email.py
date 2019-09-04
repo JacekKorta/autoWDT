@@ -6,9 +6,9 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
-def send_mail(subiect, message_body, recipient, file):
+def send_mail(subiect, message_body, file):
     attach_file_name = file
-    receiver_address = recipient
+    receiver_address = config.RECEIVER
     sender = config.SENDER
     mail_username = config.MAIL_USERNAME
     mail_password = config.MAIL_PASSWORD
@@ -17,7 +17,7 @@ def send_mail(subiect, message_body, recipient, file):
 
     msg = MIMEMultipart()
     msg['From'] = sender
-    msg['To'] = recipient
+    msg['To'] = receiver_address
     msg['Subject'] = subiect
 
     msg.attach(MIMEText(message_body))

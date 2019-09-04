@@ -1,22 +1,31 @@
-import asyncio, time, wdt_email
+import asyncio, time, wdt_email, shelve
 from pyppeteer import launch
 
 eti = ("PL", "7811651261")
 
+customer_code_input = input('podaj kod kontrachenta: ').upper()
+
+shelve_file = shelve.open('customer_db')
+customer = shelve_file.get(customer_code_input, 'W bazie nie ma takiego klienta')
+shelve_file.close()
 
 async def main():
     browser = await launch(headless=True)
     page = await browser.newPage()
     await page.goto('http://ec.europa.eu/taxation_customs/vies/vatResponse.html?locale=pl')
     await page.waitFor('#countryCombobox')
-    await page.type('#countryCombobox', eti[0])
-    await page.type('#number', eti[1])
+    await page.type('#countryCombobox', customer[0])
+    await page.type('#number', customer[1])
     await page.click('#submit')
+    print('submit')
     time.sleep(5)
     await page.pdf(path='vies.pdf', format='A4')
     await browser.close()
-    wdt_email.send_mail('vies', 'vies', 'jacek.korta@gmail.com', 'vies.pdf')
+    wdt_email.send_mail('vies', ' ', 'vies.pdf')
+    print('sended mail')
 
 asyncio.get_event_loop().run_until_complete(main())
+
+input('Wcisnij Enter, aby zakończyć')
 
 

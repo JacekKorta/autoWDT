@@ -1,8 +1,6 @@
 import asyncio, time, wdt_email, shelve
 from pyppeteer import launch
 
-eti = ("PL", "7811651261")
-
 customer_code_input = input('podaj kod kontrachenta: ').upper()
 
 shelve_file = shelve.open('customer_db')
@@ -21,8 +19,7 @@ async def main():
     time.sleep(5)
     await page.pdf(path='vies.pdf', format='A4')
     await browser.close()
-    wdt_email.send_mail('vies', ' ', 'vies.pdf')
-    print('sended mail')
+    os.startfile("vies.pdf", "print")
 
 asyncio.get_event_loop().run_until_complete(main())
 

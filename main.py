@@ -1,4 +1,4 @@
-import asyncio, time, wdt_email, shelve
+import asyncio, time, shelve, os
 from pyppeteer import launch
 
 eti = ("PL", "7811651261")
@@ -19,10 +19,10 @@ async def main():
     await page.click('#submit')
     print('submit')
     time.sleep(5)
-    await page.pdf(path='vies.pdf', format='A4')
-    await browser.close()
-    wdt_email.send_mail('vies', ' ', 'vies.pdf')
-    print('sended mail')
+    await page.pdf({'path': 'vies.pdf'})
+    #os.startfile("vies.pdf", "print")
+    print('printing')
+    time.sleep(2)
 
 asyncio.get_event_loop().run_until_complete(main())
 

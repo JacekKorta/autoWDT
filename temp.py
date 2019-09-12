@@ -17,5 +17,5 @@ import subprocess
 subprocess.Popen([r"D:\Skrypty\autoWDT\vies.pdf"])
 '''
 
-import webbrowser
-webbrowser.open_new(r'D:\Skrypty\autoWDT\vies.pdf', "print")
+import os
+os.startfile("vies.pdf", "print")

@@ -1,0 +1,16 @@
+<h3>Tabela A nr {{ data['no'] }} z dnia: {{ date_to_use }}</h3>
+
+<table border ="1">
+<tr>
+  <th>Nazwa waluty</th>
+  <th>Kod Waluty</th>
+  <th>Kurs średni</th>
+</tr>
+{% for item in data['rates'] %}
+<tr>
+  <td>{{ item['currency'] }}</td>
+  <td>{{ item['code'] }}</td>
+  <td>{{ item['mid'] }}</td>
+</tr>
+{% endfor %}
+</table>

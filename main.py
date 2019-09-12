@@ -17,16 +17,11 @@ async def main():
     await page.click('#submit')
     print('submit')
     time.sleep(5)
-<<<<<<< HEAD
-    await page.pdf({'path': 'vies.pdf'})
-    #os.startfile("vies.pdf", "print")
-    print('printing')
-    time.sleep(2)
-=======
     await page.pdf(path='vies.pdf', format='A4')
+    time.sleep(2)
     await browser.close()
     os.startfile("vies.pdf", "print")
->>>>>>> 13506306228381dc70ea475c13163d62e63cab70
+    print('printing')
 
 asyncio.get_event_loop().run_until_complete(main())
 

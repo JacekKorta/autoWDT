@@ -9,8 +9,10 @@ app.db
 *.xlsx
 *.db
 *.txt
-materialy/
 *.csv
 *.rtf
 faktury.htm
 *.pdf
+*.bak
+*.dat
+*.dir

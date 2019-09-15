@@ -1,7 +1,9 @@
 ''
 __pycache__/
 migrations/
+materia³y/
 config.py
+temp.py
 logs/
 venv/
 app.db
